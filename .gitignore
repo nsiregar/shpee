@@ -1,0 +1,18 @@
+# Environment
+.vscode/
+
+# Build
+__pycache__/
+venv/
+*.py[cod]
+dist/
+*.env
+
+# Distribution
+*.egg-info/
+
+# Testing
+.mypy_cache/
+.pytest_cache/
+.tox/
+.coverage
