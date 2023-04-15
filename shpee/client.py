@@ -14,7 +14,8 @@ class ShopeeClient:
 
     def post(self, payload: str):
         headers = self._headers(payload)
-        return self._client.post("/graphql", headers=headers, json=payload)
+        response = self._client.post("/graphql", headers=headers, json=payload)
+        return response.json()
 
     def _headers(self, payload):
         auth = Authentication(self.app_id, self.app_secret)
@@ -32,4 +33,4 @@ class ShopeeAffiliate:
     def shortlink(self, origin_url: str, sub_ids: List[str] = []):
         link = ShortLink(origin_url=origin_url, sub_ids=sub_ids)
         resp = self._client.post(payload=link.payload)
-        return resp
+        return resp['data']['generateShortLink']['shortLink']
